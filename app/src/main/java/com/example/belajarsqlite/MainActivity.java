@@ -55,11 +55,19 @@ public class MainActivity extends AppCompatActivity {
                 String Isian_Nama = edNama.getText().toString();
                 String Isian_Nim = edNim.getText().toString();
                 String Isian_NoHp = edNoHp.getText().toString();
+                int Angka_Ganjil = Integer.parseInt(mhsList);
 
 
                 if (Isian_Nama.isEmpty() || Isian_Nim.isEmpty()|| Isian_NoHp.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "ISIAN MASIH KOSONG", Toast.LENGTH_SHORT).show();
                 } else {
+                    Intent intent_list = new Intent(MainActivity.this, ListMhsActivity.class);
+
+                    for(int i=1+1 ; i <= Angka_Ganjil; i++) {
+                        if (i % 2 != 0) {
+                            System.out.print (" ");
+                        }
+                    }
                     // mhsList.add(new MhsModel(-1, Isian_Nama, Isian_Nim, Isian_NoHp));
 
 
@@ -105,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent_list = new Intent(MainActivity.this, ListMhsActivity.class);
                     intent_list.putParcelableArrayListExtra("mhsList", mhsList);
                     startActivity(intent_list);
+                    Toast.makeText(getApplicationContext(), "Data lebih dari 5.tidak dapat menyimpan data", Toast.LENGTH_SHORT).show();
                 }
             }
         });
